@@ -1,3 +1,13 @@
+
+    // var ele = document.querySelector('#name');
+    // var selfVue = new SelfVue({
+    //     name: 'hello world'
+    // }, ele, 'name');
+
+    // window.setTimeout(function () {
+    //     console.log('name值改变了');
+    //     selfVue.name = 'canfoo';
+    // }, 2000);
 function SelfVue (data, el, exp) {
     var self = this;
     this.data = data;

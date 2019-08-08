@@ -1,3 +1,6 @@
+// new Watcher(this, exp, function (value) {
+//     el.innerHTML = value;
+// });
 function Watcher(vm, exp, cb) {
     this.cb = cb;
     this.vm = vm;

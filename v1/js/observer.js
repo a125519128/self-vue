@@ -5,7 +5,7 @@ function Observer(data) {
 Observer.prototype = {
     walk: function(data) {
         var self = this;
-        Object.keys(data).forEach(function(key) {
+        Object.keys(data).forEach(function(key) {  // 递归遍历所有子属性
             self.defineReactive(data, key, data[key]);
         });
     },
@@ -16,8 +16,8 @@ Observer.prototype = {
             enumerable: true,
             configurable: true,
             get: function() {
-                if (Dep.target) {
-                    dep.addSub(Dep.target);
+                if (Dep.target) {//是否需要添加订阅者
+                    dep.addSub(Dep.target);// 在这里添加一个订阅者
                 }
                 return val;
             },
@@ -26,7 +26,8 @@ Observer.prototype = {
                     return;
                 }
                 val = newVal;
-                dep.notify();
+                console.log('属性' + key + '已经被监听了，现在值为：“' + newVal.toString() + '”');
+                dep.notify();// 如果数据变化，通知所有订阅者
             }
         });
     }
@@ -38,7 +39,7 @@ function observe(value, vm) {
     }
     return new Observer(value);
 };
-
+//消息订阅器Dep,在监听器Observer和订阅者Watcher之间进行统一管理的
 function Dep () {
     this.subs = [];
 }
